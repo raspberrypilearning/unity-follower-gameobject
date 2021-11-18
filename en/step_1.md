@@ -1,59 +1,43 @@
-## Introduction
+In the Inspector window for the GameObject, click ‘Add Component’ and choose CharacterController. Position and size the controller so it covers the whole of your follower GameObject.
 
-Add project description here. What will learners be making? Broadly what skills will they be learning?
+![The Inspector window showing the Character Controller component.](images/path.png)
 
-### What you will make
+![The Scene view showing the Dog GameObject with Character Collider highlighted around the frame of the Dog.](images/path.png)
 
---- no-print ---
-Add instructions for interacting with the embedded content here.
+**Tip:** Press ‘shift’ + ‘f’ to focus on the follower GameObject in the Scene view .
 
-<div class="scratch-preview">
-  <iframe allowtransparency="true" width="485" height="402" src="https://scratch.mit.edu/projects/embed/160619869/?autostart=false" frameborder="0"></iframe>
-</div>
---- /no-print ---
+Click on ‘Add Component’ and add a Box Collider. Adjust the Center Y and Size Y values so that other characters cannot walk through or climb on top of the follower GameObject:
 
---- print-only ---
-![Complete project](images/showcase_static.png)
---- /print-only ---
+![The Inspector window showing the Box Collider component with Cener Y and Size Y properties highlighted.](images/path.png)
 
---- collapse ---
----
-title: What you will need
----
-### Hardware
+Go to the ‘Add Component’ button  again and add a second ‘Box Collider’ to the follower GameObject.
 
-+ A computer or tablet capable of running Scratch 3
+This Box collider will use ‘IsTrigger’ to make the follower GameObject move if the Player gets close enough to draw the followers attention. This Box collider needs to be big enough that the Player can’t easily sneak past:
 
-### Software
+![The Box Collider component with 'Is Trigger' ticked, Center Y = 0.5 and Size X=3, Y=1, and Z=3.](images/path.png)
 
-+ Scratch 3 (either [online](https://scratch.mit.edu/){:target="_blank"} or [offline](https://scratch.mit.edu/download){:target="_blank"})
-+ Python 3
-+ This project can be completed in a web browser using [trinket.io](https://trinket.io/)
+![The Scene view showing the dog with Character Collider fitting around it's body and the Box Collider much larger on the X and Y axis.](images/path.png)
 
-### Downloads
+**Tip:** You will also need to add Box Colliders to the any other GameObjects that could move into the patrol area. These Box Colliders will not have 'Is Trigger' checked.
 
-+ Download the project [starter file](http://rpf.io/p/en/projectName-go){:target="_blank"} if working offline
+Click on ‘Add Component’ and add a ‘New script’ then give your script a sensible name.
 
---- /collapse ---
+Double-click on your new script to open it in the code editor.
 
---- collapse ---
----
-title: What you will learn
----
+Create a variable to store whether or not the follower GameObject is following the Player:
 
-+ Learning objective 1
-+ Learning objective 2
-+ Learning objective 3
+```
+bool isFollowing = false;
+```
 
---- /collapse ---
+Create an `OnTriggerEnter()` method to change the state of the variable if the Player gets close:
 
---- collapse ---
----
-title: Additional information for educators
----
-
-You can download the completed project [here](http://rpf.io/p/en/projectName-get){:target="_blank"}.
-
-If you need to print this project, please use the [printer-friendly version](https://projects.raspberrypi.org/en/projects/projectName/print){:target="_blank"}.
-
---- /collapse ---
+```
+void OnTriggerEnter(Collider other)
+{
+    if (other.gameObject.tag == "Player")
+    {
+        IsFollowing = true;
+    }
+}
+```
