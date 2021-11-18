@@ -1,43 +1,62 @@
-In the Inspector window for the GameObject, click ‘Add Component’ and choose CharacterController. Position and size the controller so it covers the whole of your follower GameObject.
+![Animated gif of the Game view showing a blue car following a red car.](images/car-follow.gif)
 
-![The Inspector window showing the Character Controller component.](images/path.png)
-
-![The Scene view showing the Dog GameObject with Character Collider highlighted around the frame of the Dog.](images/path.png)
+In the Inspector window for the GameObject, click ‘Add Component’ and choose CharacterController. Position and size the controller so it is above the floor and covers the whole of your follower GameObject.
 
 **Tip:** Press ‘shift’ + ‘f’ to focus on the follower GameObject in the Scene view .
 
-Click on ‘Add Component’ and add a Box Collider. Adjust the Center Y and Size Y values so that other characters cannot walk through or climb on top of the follower GameObject:
-
-![The Inspector window showing the Box Collider component with Cener Y and Size Y properties highlighted.](images/path.png)
+Click on ‘Add Component’ and add a Box Collider. Adjust the Center Y and Size Y values so that the collider is above the floor and covers the whole of your follower GameObject so that other characters cannot walk through or climb on top of the follower GameObject:
 
 Go to the ‘Add Component’ button  again and add a second ‘Box Collider’ to the follower GameObject.
 
-This Box collider will use ‘IsTrigger’ to make the follower GameObject move if the Player gets close enough to draw the followers attention. This Box collider needs to be big enough that the Player can’t easily sneak past:
+For this Box collider, ‘IsTrigger’ to make the follower GameObject move if the Player gets close enough to draw the followers attention. This Box collider needs to be big enough that the Player can’t easily sneak past:
 
-![The Box Collider component with 'Is Trigger' ticked, Center Y = 0.5 and Size X=3, Y=1, and Z=3.](images/path.png)
-
-![The Scene view showing the dog with Character Collider fitting around it's body and the Box Collider much larger on the X and Y axis.](images/path.png)
+![The Scene view showing the car with Character Collider and Box Collider fitting around it's body and a Box Collider much larger on the X and Y axis.](images/colliders-car.png)
 
 **Tip:** You will also need to add Box Colliders to the any other GameObjects that could move into the patrol area. These Box Colliders will not have 'Is Trigger' checked.
 
-Click on ‘Add Component’ and add a ‘New script’ then give your script a sensible name.
+Click on ‘Add Component’ and add a ‘New script’ then give your script a sensible name. Double-click on your new script to open it in the code editor.
 
-Double-click on your new script to open it in the code editor.
-
-Create a variable to store whether or not the follower GameObject is following the Player:
+Create variables to store whether or not the follower GameObject is following the Player, set the speed and distance and set the direction position:
 
 ```
-bool isFollowing = false;
+    bool isFollowing = false;
+    float followSpeed = 3f;
+    float followDistance = 4f;
+    Vector3 moveDirection = Vector3.zero;
+    public GameObject Player;
 ```
 
-Create an `OnTriggerEnter()` method to change the state of the variable if the Player gets close:
+Create an `OnTriggerEnter()` method to change the state of the variable if the Player gets close enough to collide with the trigger:
 
 ```
-void OnTriggerEnter(Collider other)
-{
-    if (other.gameObject.tag == "Player")
+    void OnTriggerEnter(Collider other)
     {
-        IsFollowing = true;
+        if (other.gameObject.tag == "Player")
+        {
+            isFollowing = true;
+        }
     }
-}
 ```
+
+Add code to the `Update()` method to look at and move towards the Player if the follow state is true: 
+
+```
+    void Update()
+    {
+        if (isFollowing == true)
+        {
+            transform.LookAt(Player.transform);
+
+            if (Vector3.Distance(Player.transform.position, transform.position) > followDistance)
+            {
+                CharacterController controller = GetComponent<CharacterController>();
+                var moveDirection = Vector3.Normalize(Player.transform.position - transform.position);
+                controller.SimpleMove(moveDirection * followSpeed);
+            }
+        }
+    }
+```
+
+Save your code and return to the Unity editor. go to the script component in the Inspector window for the follower GameObject and click on the circle next to ‘Player’ and select the Player GameObject from the menu.
+
+![The Inspector window showing the script component with Player Gameobject in the Player variable.](images/script-player.png)
