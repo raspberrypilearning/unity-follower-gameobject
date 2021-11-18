@@ -1,11 +1,9 @@
-title: unity-follower-gameobject
+title: Create a GameObject that follows the Player
 hero_image: images/banner.png
-description: unity-follower-gameobject description
+description: Create a GameObject that follows the Player
 version: 4
 listed: false
 copyedit: false
 last_tested: "2021-11-18"
 steps:
-  - title: Introduction
-  - title: Step title
-  - title: What next?
+  - title: Create a GameObject that follows the Player
