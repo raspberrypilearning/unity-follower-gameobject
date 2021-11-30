@@ -52,7 +52,7 @@ language: cs
 ---
     void Update()
     {
-        if (isFollowing == true)
+        if (isFollowing)
         {
             transform.LookAt(Player.transform);
 
