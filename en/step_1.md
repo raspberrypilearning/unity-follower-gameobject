@@ -18,32 +18,41 @@ Click on ‘Add Component’ and add a ‘New script’ then give your script a 
 
 Create variables to store whether or not the follower GameObject is following the Player, set the speed and distance and set the direction position:
 
-```
+--- code ---
+---
+language: cs
+---
     bool isFollowing = false;
     float followSpeed = 3f;
     float followDistance = 4f;
     Vector3 moveDirection = Vector3.zero;
     public GameObject Player;
-```
+--- /code ---
 
 Create an `OnTriggerEnter()` method to change the state of the variable if the Player gets close enough to collide with the trigger:
 
-```
+--- code ---
+---
+language: cs
+---
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             isFollowing = true;
         }
     }
-```
+--- /code ---
 
 Add code to the `Update()` method to look at and move towards the Player if the follow state is true: 
 
-```
+--- code ---
+---
+language: cs
+---
     void Update()
     {
-        if (isFollowing == true)
+        if (isFollowing)
         {
             transform.LookAt(Player.transform);
 
@@ -55,7 +64,7 @@ Add code to the `Update()` method to look at and move towards the Player if the 
             }
         }
     }
-```
+--- /code ---
 
 Save your code and return to the Unity editor. go to the script component in the Inspector window for the follower GameObject and click on the circle next to ‘Player’ and select the Player GameObject from the menu.
 
