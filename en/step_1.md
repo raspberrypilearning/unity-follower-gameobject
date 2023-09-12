@@ -1,22 +1,22 @@
 ![Animated gif of the Game view showing a blue car following a red car.](images/car-follow.gif)
 
-In the Inspector window for the GameObject, click ‘Add Component’ and choose CharacterController. Position and size the controller so it is above the floor and covers the whole of your follower GameObject.
+In the Inspector window for the GameObject, click **Add Component** and choose **Character Controller**. Position and size the controller so it is above the floor and covers the whole of your follower GameObject.
 
-**Tip:** Press ‘shift’ + ‘f’ to focus on the follower GameObject in the Scene view .
+**Tip:** Press <kbd>Shift</kbd>+<kbd>f</kbd> to focus on the follower GameObject in the Scene view.
 
-Click on ‘Add Component’ and add a Box Collider. Adjust the Center Y and Size Y values so that the collider is above the floor and covers the whole of your follower GameObject so that other characters cannot walk through or climb on top of the follower GameObject:
+Click on **Add Component** and add a **Box Collider**. Adjust the Center y and Size y values so that the collider is above the floor and covers the whole of your follower GameObject so that other characters cannot walk through or climb on top of it:
 
-Go to the ‘Add Component’ button  again and add a second ‘Box Collider’ to the follower GameObject.
+Go to the **Add Component** button again and add a second **Box Collider** to the follower GameObject.
 
-For this Box collider, ‘IsTrigger’ to make the follower GameObject move if the Player gets close enough to draw the followers attention. This Box collider needs to be big enough that the Player can’t easily sneak past:
+For this Box Collider, check 'IsTrigger' to make the follower GameObject move if the Player gets close enough to draw the follower's attention. This Box Collider needs to be big enough that the Player can’t easily sneak past:
 
-![The Scene view showing the car with Character Collider and Box Collider fitting around it's body and a Box Collider much larger on the X and Y axis.](images/colliders-car.png)
+![The Scene view showing the car with Character Collider and Box Collider fitting around its body and a Box Collider much larger on the x- and y-axes.](images/colliders-car.png)
 
-**Tip:** You will also need to add Box Colliders to the any other GameObjects that could move into the patrol area. These Box Colliders will not have 'Is Trigger' checked.
+**Tip:** You will also need to add Box Colliders to the any other GameObjects that could move into the patrol area. These Box Colliders will not have 'IsTrigger' checked.
 
-Click on ‘Add Component’ and add a ‘New script’ then give your script a sensible name. Double-click on your new script to open it in the code editor.
+Click on **Add Component** and add a **New script**, then give your script a sensible name. Double-click on your new script to open it in the code editor.
 
-Create variables to store whether or not the follower GameObject is following the Player, set the speed and distance and set the direction position:
+Create variables to store whether or not the follower GameObject is following the Player, set the speed and distance, and set the direction position:
 
 --- code ---
 ---
@@ -66,6 +66,6 @@ language: cs
     }
 --- /code ---
 
-Save your code and return to the Unity editor. go to the script component in the Inspector window for the follower GameObject and click on the circle next to ‘Player’ and select the Player GameObject from the menu.
+Save your code and return to the Unity Editor. Go to the script component in the Inspector window for the follower GameObject and click on the circle next to 'Player' and select the Player GameObject from the menu.
 
-![The Inspector window showing the script component with Player Gameobject in the Player variable.](images/script-player.png)
+![The Inspector window showing the script component with Player GameObject in the Player variable.](images/script-player.png)
