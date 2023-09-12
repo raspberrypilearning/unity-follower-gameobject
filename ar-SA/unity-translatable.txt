@@ -1,0 +1,9 @@
+isFollowing
+
+followSpeed
+
+followDistance
+
+moveDirection
+
+Player
