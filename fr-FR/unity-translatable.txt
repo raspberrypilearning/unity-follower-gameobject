@@ -1,9 +1,9 @@
-isFollowing
+suit
 
-followSpeed
+suivreVitesse
 
-followDistance
+suivreDistance
 
-moveDirection
+bougeDirection
 
-Player
+Joueur
