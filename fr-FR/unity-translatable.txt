@@ -1,0 +1,9 @@
+suit
+
+suivreVitesse
+
+suivreDistance
+
+bougeDirection
+
+Joueur
