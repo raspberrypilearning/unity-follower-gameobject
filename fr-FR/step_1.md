@@ -1,22 +1,22 @@
-![Animated gif of the Game view showing a blue car following a red car.](images/car-follow.gif)
+![Gif animé de la vue Game montrant une voiture bleue suivant une voiture rouge.](images/car-follow.gif)
 
-In the Inspector window for the GameObject, click **Add Component** and choose **Character Controller**. Position and size the controller so it is above the floor and covers the whole of your follower GameObject.
+Dans la fenêtre Inspector du GameObject, clique sur **Add Component** et choisis **Character Controller**. Positionne et dimensionne le contrôleur de façon à ce qu'il soit au-dessus du sol et qu'il couvre l'ensemble de ton GameObject suiveur.
 
-**Tip:** Press <kbd>Shift</kbd>+<kbd>f</kbd> to focus on the follower GameObject in the Scene view.
+**Astuce :** appuie sur <kbd>Shift</kbd>+<kbd>F</kbd> pour centrer la vue sur le GameObject patrouilleur dans la vue Scene.
 
-Click on **Add Component** and add a **Box Collider**. Adjust the Center y and Size y values so that the collider is above the floor and covers the whole of your follower GameObject so that other characters cannot walk through or climb on top of it:
+Clique sur **Add Component** et ajoute un **Box Collider**. Ajuste les valeurs Center y et Size y de façon à ce que le collider soit au-dessus du sol et couvre la totalité de ton GameObject suiveur, de sorte que les autres personnages ne puissent pas passer à travers ou grimper dessus :
 
-Go to the **Add Component** button again and add a second **Box Collider** to the follower GameObject.
+Va de nouveau sur le bouton **Add Component** et ajoute un deuxième **Box Collider** au GameObject suiveur.
 
-For this Box Collider, check 'IsTrigger' to make the follower GameObject move if the Player gets close enough to draw the follower's attention. This Box Collider needs to be big enough that the Player can’t easily sneak past:
+Pour ce Box Collider, coche la case « IsTrigger » pour que le GameObject suiveur se déplace si le joueur s'approche suffisamment pour attirer l'attention du suiveur. Ce Box Collider doit être suffisamment grand pour que le joueur ne puisse pas se faufiler facilement :
 
-![The Scene view showing the car with Character Collider and Box Collider fitting around its body and a Box Collider much larger on the x- and y-axes.](images/colliders-car.png)
+![La vue Scene montant la voiture avec un Character Collider et un Box Collider autour de sa carrosserie et un Box Collider beaucoup plus grand sur les axes x et y.](images/colliders-car.png)
 
-**Tip:** You will also need to add Box Colliders to the any other GameObjects that could move into the patrol area. These Box Colliders will not have 'IsTrigger' checked.
+**Astuce :** tu devras également ajouter des Box Colliders à tous les autres GameObjects qui pourraient se déplacer dans la zone de patrouille. La case « IsTrigger » n'est pas cochée pour ces Box Colliders.
 
-Click on **Add Component** and add a **New script**, then give your script a sensible name. Double-click on your new script to open it in the code editor.
+Clique sur **Add Component** et ajoute un **New script**, puis donne un nom judicieux à ton script. Double-clique sur ton nouveau script pour l'ouvrir dans l'éditeur de code.
 
-Create variables to store whether or not the follower GameObject is following the Player, set the speed and distance, and set the direction position:
+Crée des variables pour stocker si le suiveur GameObject suit ou non le joueur, définit la vitesse et la distance et définit la position de direction :
 
 --- code ---
 ---
@@ -30,7 +30,7 @@ language: cs
     public GameObject Player;
 --- /code ---
 
-Create an `OnTriggerEnter()` method to change the state of the variable if the Player gets close enough to collide with the trigger:
+Crée une méthode `OnTriggerEnter()` pour changer l'état de la variable si le joueur s'approche suffisamment pour entrer en collision avec le trigger :
 
 --- code ---
 ---
@@ -46,7 +46,7 @@ language: cs
     }
 --- /code ---
 
-Add code to the `Update()` method to look at and move towards the Player if the follow state is true:
+Ajoute du code à la méthode `Update()` pour regarder et se déplacer vers le joueur si l'état de suivi est vrai :
 
 --- code ---
 ---
@@ -69,6 +69,6 @@ language: cs
     }
 --- /code ---
 
-Save your code and return to the Unity Editor. Go to the script component in the Inspector window for the follower GameObject and click on the circle next to 'Player' and select the Player GameObject from the menu.
+Enregistre ton code et retourne à l'éditeur Unity. Va dans le composant Script de la fenêtre Inspector pour le GameObject suiveur et clique sur le cercle à côté de « Player » et sélectionne le GameObject Player dans le menu.
 
-![The Inspector window showing the script component with Player GameObject in the Player variable.](images/script-player.png)
+![La fenêtre Inspector montrant le composant Script avec le GameObject Player dans la variable Player.](images/script-player.png)
