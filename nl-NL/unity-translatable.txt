@@ -1,9 +1,9 @@
-isFollowing
+isVolgend
 
-followSpeed
+volgSnelheid
 
-followDistance
+volgAfstand
 
-moveDirection
+beweegRichting
 
-Player
+Speler
