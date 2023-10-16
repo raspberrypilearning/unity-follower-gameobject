@@ -1,22 +1,22 @@
-![Animated gif of the Game view showing a blue car following a red car.](images/car-follow.gif)
+![Gif van de Spelweergave met een blauwe auto die een rode auto volgt.](images/car-follow.gif)
 
-In the Inspector window for the GameObject, click **Add Component** and choose **Character Controller**. Position and size the controller so it is above the floor and covers the whole of your follower GameObject.
+Klik in het venster Inspector voor het GameObject op **Add Component** en kies **Character Controller**. Plaats en bepaal de grootte van de controller zodat deze boven de vloer is en het hele spelobject van je volger bedekt.
 
-**Tip:** Press <kbd>Shift</kbd>+<kbd>f</kbd> to focus on the follower GameObject in the Scene view.
+**Tip:** Druk op <kbd>Shift</kbd>+<kbd>f</kbd> om scherp te stellen op het GameObject dat volgt in de Scèneweergave.
 
-Click on **Add Component** and add a **Box Collider**. Adjust the Center y and Size y values so that the collider is above the floor and covers the whole of your follower GameObject so that other characters cannot walk through or climb on top of it:
+Klik op **Add Component** en voeg een **Box Collider**toe. Pas de waarden Center y en Size y zo aan dat de collider boven de vloer ligt en het hele spelobject van je volger bedekt, zodat andere personages er niet doorheen kunnen lopen of er bovenop kunnen klimmen:
 
-Go to the **Add Component** button again and add a second **Box Collider** to the follower GameObject.
+Ga opnieuw naar de knop **Add Component** en voeg een tweede **Box Collider** toe aan het volger GameObject.
 
-For this Box Collider, check 'IsTrigger' to make the follower GameObject move if the Player gets close enough to draw the follower's attention. This Box Collider needs to be big enough that the Player can’t easily sneak past:
+Voor deze Box Collider vink je 'IsTrigger' aan om het GameObject van de volger te laten bewegen als de speler dichtbij genoeg komt om de aandacht van de volger te trekken. Deze Box Collider moet groot genoeg zijn om de speler niet gemakkelijk voorbij te laten sluipen:
 
-![The Scene view showing the car with Character Collider and Box Collider fitting around its body and a Box Collider much larger on the x- and y-axes.](images/colliders-car.png)
+![De Scèneweergave toont de auto met Character Controller en passende Box Collider en een Box Collider die veel groter is op de x- en y-as.](images/colliders-car.png)
 
-**Tip:** You will also need to add Box Colliders to the any other GameObjects that could move into the patrol area. These Box Colliders will not have 'IsTrigger' checked.
+**Tip:** Je moet ook Box Colliders toevoegen aan alle andere GameObjects die naar het patrouillegebied kunnen bewegen. Bij deze Box Colliders is 'IsTrigger' niet aangevinkt.
 
-Click on **Add Component** and add a **New script**, then give your script a sensible name. Double-click on your new script to open it in the code editor.
+Klik op **Add Component** en voeg een **New script**toe, geef vervolgens je script een logische naam. Dubbelklik op het nieuwe script om het te openen in de code-editor.
 
-Create variables to store whether or not the follower GameObject is following the Player, set the speed and distance, and set the direction position:
+Maak variabelen om op te slaan of de volger GameObject de speler wel of niet volgt, stel de snelheid en afstand in en stel de richtingspositie in:
 
 --- code ---
 ---
@@ -30,7 +30,7 @@ language: cs
     public GameObject Player;
 --- /code ---
 
-Create an `OnTriggerEnter()` method to change the state of the variable if the Player gets close enough to collide with the trigger:
+Maak een `OnTriggerEnter()` methode om de status van de variabele te veranderen als de speler dichtbij genoeg komt om te botsen met de trigger:
 
 --- code ---
 ---
@@ -46,7 +46,7 @@ language: cs
     }
 --- /code ---
 
-Add code to the `Update()` method to look at and move towards the Player if the follow state is true:
+Voeg code toe aan de methode `Update()` om naar de speler te kijken en te bewegen als de volgende status waar is:
 
 --- code ---
 ---
@@ -69,6 +69,6 @@ language: cs
     }
 --- /code ---
 
-Save your code and return to the Unity Editor. Go to the script component in the Inspector window for the follower GameObject and click on the circle next to 'Player' and select the Player GameObject from the menu.
+Sla je code op en ga terug naar de Unity Editor. Ga naar het script-onderdeel in het Inspector-venster voor het volger GameObject en klik op de cirkel naast 'Player' en selecteer het Player GameObject in het menu.
 
-![The Inspector window showing the script component with Player GameObject in the Player variable.](images/script-player.png)
+![Het venster Inspector met de scriptcomponent met Player GameObject in de Player variabele.](images/script-player.png)
