@@ -1,0 +1,9 @@
+isVolgend
+
+volgSnelheid
+
+volgAfstand
+
+beweegRichting
+
+Speler
