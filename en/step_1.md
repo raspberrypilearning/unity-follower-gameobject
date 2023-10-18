@@ -10,7 +10,7 @@ Go to the **Add Component** button again and add a second **Box Collider** to th
 
 For this Box Collider, check 'IsTrigger' to make the follower GameObject move if the Player gets close enough to draw the follower's attention. This Box Collider needs to be big enough that the Player can’t easily sneak past:
 
-![The Scene view showing the car with Character Collider and Box Collider fitting around its body and a Box Collider much larger on the x- and y-axes.](images/colliders-car.png)
+![The Scene view showing the car with a Box Collider fitting around its body and a new Box Collider that is much larger on the x- and y-axes.](images/colliders-car.png)
 
 **Tip:** You will also need to add Box Colliders to the any other GameObjects that could move into the patrol area. These Box Colliders will not have 'IsTrigger' checked.
 
