@@ -71,4 +71,4 @@ language: cs
 
 Sla je code op en ga terug naar de Unity Editor. Ga naar het script-onderdeel in het Inspector-venster voor het volger GameObject en klik op de cirkel naast 'Speler' en selecteer het Speler GameObject in het menu.
 
-![Het venster Inspector met de scriptcomponent met Speler GameObject in de Speler variabele.](images/script-Speler.png)
+![Het venster Inspector met de scriptcomponent met Speler GameObject in de Speler variabele.](images/script-player.png)
