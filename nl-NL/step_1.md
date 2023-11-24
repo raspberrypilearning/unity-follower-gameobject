@@ -39,7 +39,7 @@ language: cs
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Speler"))
+        if (other.CompareTag("Player"))
         {
             isVolgend = true;
         }
